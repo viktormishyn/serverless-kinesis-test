@@ -17,8 +17,10 @@ npm init -y
 // create package.json
 
 sls deploy
-sls deploy -s stage --region eu-central-1
-
 sls remove
+// default region: us-east-1; default stage: dev
+
+sls deploy -s dev --region eu-central-1
+sls revome -s dev --region eu-central-1
 
 sls logs -f <function-name>
