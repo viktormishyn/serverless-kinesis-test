@@ -1,0 +1,24 @@
+SERVERLESS FRAMEWORK
+
+>>> sudo npm install -g serverless --scripts-prepend-node-path
+
+Use the --scripts-prepend-node-path option to include the path for the node binary npm was executed with
+About using snaps:
+https://nodesource.com/blog/installing-nodejs-tutorial-using-snaps-on-linux
+
+>>> serverless config credentials --provider aws --key <key> --secret <secret> --profile <profile-name>
+
+credentials are stored in '~/.aws/credentials' as default aws profile
+
+serverless create --template aws-nodejs --path <project-name>
+// project will be created in the same folder
+
+npm init -y
+// create package.json
+
+sls deploy
+sls deploy -s stage --region eu-central-1
+
+sls remove
+
+sls logs -f <function-name>
