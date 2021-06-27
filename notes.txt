@@ -30,3 +30,7 @@ sls logs -f <function-name>
 npm install uuid --save
 // generate id
 
+npm install aws-sdk --save
+
+npm install serverless-pseudo-parameters --save
+// package which allows to use pseudo-parameters, defining resourses' arns in serverless.yml
