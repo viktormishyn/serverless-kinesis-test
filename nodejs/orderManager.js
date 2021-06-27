@@ -1,6 +1,11 @@
 "use strict";
 
 const uuidv1 = require("uuid/v1");
+const AWS = require("aws-sdk");
+
+const dynamo = new AWS.DynamoDB.DocumentClient();
+
+const TABLE_NAME = process.env.orderTableName;
 
 module.export.createOrder = (body) => {
   const order = {
@@ -19,4 +24,15 @@ module.export.createOrder = (body) => {
 module.export.placeNewOrder = (order) => {
   // save order in db
   // put order into stream
+  return saveNewOrder(order);
 };
+
+function saveNewOrder(order) {
+  // the function returns a promise
+  const params = {
+    TableName: TABLE_NAME,
+    Item: order,
+  };
+
+  return dynamo.put(param).promise();
+}

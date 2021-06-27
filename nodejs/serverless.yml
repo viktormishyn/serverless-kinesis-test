@@ -11,6 +11,8 @@ functions:
     handler: handler.createOrder
     events:
       - httpApi: "POST /order"
+    environment:
+      orderTableName: ordersTable
 
 resources:
   Resources:
