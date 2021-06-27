@@ -24,3 +24,9 @@ sls deploy -s dev --region eu-central-1
 sls revome -s dev --region eu-central-1
 
 sls logs -f <function-name>
+
+-------------------------------------------------
+
+npm install uuid --save
+// generate id
+
