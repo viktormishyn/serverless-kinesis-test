@@ -13,6 +13,7 @@ functions:
       - httpApi: "POST /order"
     environment:
       orderTableName: ordersTable
+      orderStreamName: order-events
 
 resources:
   Resources:
