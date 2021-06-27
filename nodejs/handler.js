@@ -1,21 +1,25 @@
 "use strict";
 
+function createResponse(statusCode, message) {
+  const response = {
+    statusCode: statusCode,
+    body: JSON.stringify(message),
+  };
+
+  return response;
+}
+
 module.exports.createOrder = async (event) => {
   const body = JSON.parse(event.body);
 
   const order = orderManager.createOrder(body);
 
-  orderManager.placeNewOrder(order);
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: "Order created!",
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+  return orderManager
+    .placeNewOrder(order)
+    .then(() => {
+      return createResponse(200, order);
+    })
+    .catch((err) => {
+      return createResponse(400, err);
+    });
 };
