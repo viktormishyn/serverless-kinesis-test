@@ -1,6 +1,6 @@
 "use strict";
 
-const uuidv1 = require("uuid/v1");
+const { v1: uuidv1 } = require("uuid");
 const AWS = require("aws-sdk");
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
@@ -38,7 +38,7 @@ function saveNewOrder(order) {
     Item: order,
   };
 
-  return dynamo.put(param).promise();
+  return dynamo.put(params).promise();
 }
 
 function placeOrderStream(order) {
