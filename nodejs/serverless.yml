@@ -3,6 +3,10 @@ frameworkVersion: "2"
 
 plugins:
   - serverless-pseudo-parameters
+  - serverless-webpack
+
+package:
+  individually: true
 
 provider:
   name: aws
@@ -29,6 +33,13 @@ functions:
     handler: handler.createOrder
     events:
       - httpApi: "POST /order"
+    environment:
+      orderTableName: ordersTable
+      orderStreamName: order-events
+  orderFulfillment:
+    handler: handler.orderFulfillment
+    events:
+      - httpApi: "POST /order/fulfill"
     environment:
       orderTableName: ordersTable
       orderStreamName: order-events
